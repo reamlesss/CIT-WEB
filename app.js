@@ -3,15 +3,13 @@ const mysql = require("mysql2");
 const path = require("path");
 const app = express();
 
-
 app.use(express.static(path.join(__dirname, "public")));
 
-
 const db = mysql.createConnection({
-  host: "<ec2-public-ip>",
-  user: "bloguser",
-  password: "password",
-  database: "blog",
+  host: "3.71.189.24",
+  user: "root",
+  password: "trapovejgulas",
+  database: "CIT_WEB",
 });
 
 db.connect((err) => {
@@ -21,7 +19,6 @@ db.connect((err) => {
   }
   console.log("Connected to MySQL");
 });
-
 
 app.get("/api/posts", (req, res) => {
   db.query("SELECT * FROM posts", (err, results) => {
