@@ -7,8 +7,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const db = mysql.createConnection({
   host: "3.71.189.24",
-  user: "root",
-  password: "trapovejgulas",
+  user: "bloguser",
+  password: "web",
   database: "CIT_WEB",
 });
 
