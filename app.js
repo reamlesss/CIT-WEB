@@ -43,8 +43,8 @@ app.get("/api/posts", (req, res) => {
   });
 });
 
-const port = 3000;
-app.listen(port, () => {
+// const port = 3000;
+app.listen(3000, "0.0.0.0", () => {
   const serverIP = getServerIP();
-  console.log(`Server running on http://${serverIP}:${port}`);
+  console.log(`Server running on http://${serverIP}:3000`);
 });
