@@ -1,7 +1,6 @@
 const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
-const os = require("os"); // Add the os module to retrieve the IP address
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -21,9 +20,8 @@ db.connect((err) => {
   console.log("Connected to MySQL");
 });
 
-// Function to get the server's IP address
-
 app.get("/posts", (req, res) => {
+  console.log("Post request received");
   db.query("SELECT * FROM posts", (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
