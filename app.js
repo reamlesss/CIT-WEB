@@ -22,17 +22,7 @@ db.connect((err) => {
 });
 
 // Function to get the server's IP address
-const getServerIP = () => {
-  const ifaces = os.networkInterfaces();
-  for (const iface of Object.values(ifaces)) {
-    for (const config of iface) {
-      if (config.family === "IPv4" && !config.internal) {
-        return config.address;
-      }
-    }
-  }
-  return "localhost"; // Default fallback
-};
+
 
 app.get("/posts", (req, res) => {
   db.query("SELECT * FROM posts", (err, results) => {
@@ -46,5 +36,5 @@ app.get("/posts", (req, res) => {
 // const port = 3000;
 app.listen(3000, "0.0.0.0", () => {
   const serverIP = getServerIP();
-  console.log(`Server running on http://${serverIP}:3000`);
+  console.log(`Server running on http://3.71.189.24:3000/`);
 });
