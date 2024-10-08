@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/api/posts")
+  fetch("http://3.71.189.24:3000/api/posts")
     .then((response) => response.json())
     .then((posts) => {
       const postsContainer = document.getElementById("posts");

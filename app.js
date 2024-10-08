@@ -34,7 +34,7 @@ const getServerIP = () => {
   return "localhost"; // Default fallback
 };
 
-app.get("/api/posts", (req, res) => {
+app.get("/posts", (req, res) => {
   db.query("SELECT * FROM posts", (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
