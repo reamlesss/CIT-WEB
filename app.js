@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
+const os = require("os"); // Add the os module to retrieve the IP address
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -20,6 +21,19 @@ db.connect((err) => {
   console.log("Connected to MySQL");
 });
 
+// Function to get the server's IP address
+const getServerIP = () => {
+  const ifaces = os.networkInterfaces();
+  for (const iface of Object.values(ifaces)) {
+    for (const config of iface) {
+      if (config.family === "IPv4" && !config.internal) {
+        return config.address;
+      }
+    }
+  }
+  return "localhost"; // Default fallback
+};
+
 app.get("/api/posts", (req, res) => {
   db.query("SELECT * FROM posts", (err, results) => {
     if (err) {
@@ -29,6 +43,8 @@ app.get("/api/posts", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+const port = 3000;
+app.listen(port, () => {
+  const serverIP = getServerIP();
+  console.log(`Server running on http://${serverIP}:${port}`);
 });
