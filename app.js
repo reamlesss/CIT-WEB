@@ -6,9 +6,9 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "bloguser",
-  password: "web",
+  host: "websitedb.cpo226aaml1h.eu-central-1.rds.amazonaws.com",
+  user: "admin",
+  password: "matejvojtisek",
   database: "CIT_WEB",
 });
 
