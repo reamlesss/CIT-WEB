@@ -33,5 +33,5 @@ app.get("/posts", (req, res) => {
 // const port = 3000;
 app.listen(3000, "0.0.0.0", () => {
   // const serverIP = getServerIP();
-  console.log(`Server running on http://3.71.189.24:3000/`);
+  console.log(`Server running on http://3.75.231.223:3000/`);
 });
